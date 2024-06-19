@@ -3,8 +3,8 @@ Documentation       A test suite with a single test for weirdle.
 
 Resource            resource.robot
 Library             Baloney.py
-Library    Process
-Library    OperatingSystem
+Library             Process
+Library             OperatingSystem
 
 Test Setup          Remove File    *.png
 Test Teardown       Log To Console    tear it down
