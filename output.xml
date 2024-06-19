@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.10.13 on darwin)" generated="2024-06-19T17:46:10.425080" rpa="false" schemaversion="5">
+<suite id="s1" name="Weirdle Robot" source="/Users/stuart.duffy/Projects/weirdle_robot">
+<suite id="s1-s1" name="Weirdle" source="/Users/stuart.duffy/Projects/weirdle_robot/weirdle.robot">
+<test id="s1-s1-t1" name="Open Weirdle" line="15">
+<kw name="Remove File" owner="OperatingSystem" type="SETUP">
+<msg time="2024-06-19T17:46:10.520220" level="INFO" html="true">Removed file '&lt;a href="file:///Users/stuart.duffy/Projects/weirdle_robot/selenium-screenshot-1.png"&gt;/Users/stuart.duffy/Projects/weirdle_robot/selenium-screenshot-1.png&lt;/a&gt;'.</msg>
+<arg>*.png</arg>
+<doc>Removes a file with the given path.</doc>
+<status status="PASS" start="2024-06-19T17:46:10.519320" elapsed="0.000944"/>
+</kw>
+<kw name="Open Browser To Weirdle" owner="resource">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:10.520716" level="INFO">Opening browser 'Chrome' to base url 'https://stubduffy.github.io'.</msg>
+<arg>${WEIRDLE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-19T17:46:10.520564" elapsed="9.478385"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-19T17:46:19.999214" elapsed="0.368393"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${DELAY}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.367740" elapsed="0.000188"/>
+</kw>
+<status status="PASS" start="2024-06-19T17:46:10.520415" elapsed="9.847565"/>
+</kw>
+<kw name="Make guess number 1 with word phone" owner="resource" source_name="Make guess number ${number} with word ${guess}">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.368563" level="INFO">Typing text 'phone' into text field 'guess'.</msg>
+<arg>guess</arg>
+<arg>${guess}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.368337" elapsed="0.096914"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.465742" level="INFO">Clicking button 'submitButton'.</msg>
+<arg>submitButton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.465505" elapsed="0.034950"/>
+</kw>
+<kw name="Split String To Characters" owner="String">
+<msg time="2024-06-19T17:46:20.500850" level="INFO">@{characters} = [ p | h | o | n | e ]</msg>
+<var>@{characters}</var>
+<arg>${guess}</arg>
+<doc>Splits the given ``string`` to characters.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.500671" elapsed="0.000198"/>
+</kw>
+<for flavor="IN ENUMERATE">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.501324" level="INFO">${adj} = 2</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.501132" elapsed="0.000211"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.528928" level="INFO">${table_cell} = p</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.501435" elapsed="0.027524"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.529100" elapsed="0.000157"/>
+</kw>
+<var name="${index}">0</var>
+<var name="${char}">p</var>
+<status status="PASS" start="2024-06-19T17:46:20.501056" elapsed="0.028233"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.529575" level="INFO">${adj} = 3</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.529446" elapsed="0.000143"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.545303" level="INFO">${table_cell} = h</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.529667" elapsed="0.015665"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.545462" elapsed="0.000149"/>
+</kw>
+<var name="${index}">1</var>
+<var name="${char}">h</var>
+<status status="PASS" start="2024-06-19T17:46:20.529382" elapsed="0.016264"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.545916" level="INFO">${adj} = 4</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.545793" elapsed="0.000136"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.561643" level="INFO">${table_cell} = o</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.546032" elapsed="0.015637"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.561815" elapsed="0.000148"/>
+</kw>
+<var name="${index}">2</var>
+<var name="${char}">o</var>
+<status status="PASS" start="2024-06-19T17:46:20.545733" elapsed="0.016260"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.562267" level="INFO">${adj} = 5</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.562135" elapsed="0.000148"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.576475" level="INFO">${table_cell} = n</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.562355" elapsed="0.014149"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.576628" elapsed="0.000150"/>
+</kw>
+<var name="${index}">3</var>
+<var name="${char}">n</var>
+<status status="PASS" start="2024-06-19T17:46:20.562078" elapsed="0.014735"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.577083" level="INFO">${adj} = 6</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.576961" elapsed="0.000135"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.590839" level="INFO">${table_cell} = e</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.577168" elapsed="0.013698"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.590987" elapsed="0.000146"/>
+</kw>
+<var name="${index}">4</var>
+<var name="${char}">e</var>
+<status status="PASS" start="2024-06-19T17:46:20.576902" elapsed="0.014265"/>
+</iter>
+<var>${index}</var>
+<var>${char}</var>
+<value>@{characters}</value>
+<status status="PASS" start="2024-06-19T17:46:20.500924" elapsed="0.090279"/>
+</for>
+<status status="PASS" start="2024-06-19T17:46:20.368162" elapsed="0.223160"/>
+</kw>
+<kw name="Make guess number 2 with word death" owner="resource" source_name="Make guess number ${number} with word ${guess}">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.591808" level="INFO">Typing text 'death' into text field 'guess'.</msg>
+<arg>guess</arg>
+<arg>${guess}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.591685" elapsed="0.028596"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.620564" level="INFO">Clicking button 'submitButton'.</msg>
+<arg>submitButton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.620426" elapsed="0.021855"/>
+</kw>
+<kw name="Split String To Characters" owner="String">
+<msg time="2024-06-19T17:46:20.642559" level="INFO">@{characters} = [ d | e | a | t | h ]</msg>
+<var>@{characters}</var>
+<arg>${guess}</arg>
+<doc>Splits the given ``string`` to characters.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.642415" elapsed="0.000159"/>
+</kw>
+<for flavor="IN ENUMERATE">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.642908" level="INFO">${adj} = 2</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.642782" elapsed="0.000142"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.658326" level="INFO">${table_cell} = d</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.642996" elapsed="0.015356"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.658478" elapsed="0.000140"/>
+</kw>
+<var name="${index}">0</var>
+<var name="${char}">d</var>
+<status status="PASS" start="2024-06-19T17:46:20.642723" elapsed="0.015929"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.658907" level="INFO">${adj} = 3</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.658786" elapsed="0.000135"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.676121" level="INFO">${table_cell} = e</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.658996" elapsed="0.017154"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.676280" elapsed="0.000152"/>
+</kw>
+<var name="${index}">1</var>
+<var name="${char}">e</var>
+<status status="PASS" start="2024-06-19T17:46:20.658727" elapsed="0.017736"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.676734" level="INFO">${adj} = 4</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.676600" elapsed="0.000146"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.691353" level="INFO">${table_cell} = a</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.676821" elapsed="0.014561"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.691498" elapsed="0.000142"/>
+</kw>
+<var name="${index}">2</var>
+<var name="${char}">a</var>
+<status status="PASS" start="2024-06-19T17:46:20.676548" elapsed="0.015126"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.691941" level="INFO">${adj} = 5</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.691822" elapsed="0.000135"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.706105" level="INFO">${table_cell} = t</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.692036" elapsed="0.014094"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.706239" elapsed="0.000139"/>
+</kw>
+<var name="${index}">3</var>
+<var name="${char}">t</var>
+<status status="PASS" start="2024-06-19T17:46:20.691762" elapsed="0.014646"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.706671" level="INFO">${adj} = 6</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.706555" elapsed="0.000133"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.721633" level="INFO">${table_cell} = h</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.706758" elapsed="0.014901"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.721794" elapsed="0.000143"/>
+</kw>
+<var name="${index}">4</var>
+<var name="${char}">h</var>
+<status status="PASS" start="2024-06-19T17:46:20.706500" elapsed="0.015469"/>
+</iter>
+<var>${index}</var>
+<var>${char}</var>
+<value>@{characters}</value>
+<status status="PASS" start="2024-06-19T17:46:20.642619" elapsed="0.079387"/>
+</for>
+<status status="PASS" start="2024-06-19T17:46:20.591500" elapsed="0.130556"/>
+</kw>
+<kw name="Make guess number 3 with word creep" owner="resource" source_name="Make guess number ${number} with word ${guess}">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.722492" level="INFO">Typing text 'creep' into text field 'guess'.</msg>
+<arg>guess</arg>
+<arg>${guess}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.722377" elapsed="0.037356"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.760007" level="INFO">Clicking button 'submitButton'.</msg>
+<arg>submitButton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.759877" elapsed="0.016488"/>
+</kw>
+<kw name="Split String To Characters" owner="String">
+<msg time="2024-06-19T17:46:20.776664" level="INFO">@{characters} = [ c | r | e | e | p ]</msg>
+<var>@{characters}</var>
+<arg>${guess}</arg>
+<doc>Splits the given ``string`` to characters.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.776510" elapsed="0.000169"/>
+</kw>
+<for flavor="IN ENUMERATE">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.777034" level="INFO">${adj} = 2</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.776894" elapsed="0.000156"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.796492" level="INFO">${table_cell} = c</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.777125" elapsed="0.019436"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.796698" elapsed="0.000154"/>
+</kw>
+<var name="${index}">0</var>
+<var name="${char}">c</var>
+<status status="PASS" start="2024-06-19T17:46:20.776833" elapsed="0.020055"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.797155" level="INFO">${adj} = 3</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.797034" elapsed="0.000138"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.811443" level="INFO">${table_cell} = r</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.797250" elapsed="0.014216"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.811591" elapsed="0.000149"/>
+</kw>
+<var name="${index}">1</var>
+<var name="${char}">r</var>
+<status status="PASS" start="2024-06-19T17:46:20.796971" elapsed="0.014801"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.812054" level="INFO">${adj} = 4</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.811926" elapsed="0.000145"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.827368" level="INFO">${table_cell} = e</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.812153" elapsed="0.015245"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.827537" elapsed="0.000156"/>
+</kw>
+<var name="${index}">2</var>
+<var name="${char}">e</var>
+<status status="PASS" start="2024-06-19T17:46:20.811865" elapsed="0.015861"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.828011" level="INFO">${adj} = 5</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.827875" elapsed="0.000152"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.845859" level="INFO">${table_cell} = e</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.828104" elapsed="0.017782"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.846010" elapsed="0.000148"/>
+</kw>
+<var name="${index}">3</var>
+<var name="${char}">e</var>
+<status status="PASS" start="2024-06-19T17:46:20.827812" elapsed="0.018374"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.846446" level="INFO">${adj} = 6</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.846326" elapsed="0.000132"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.860943" level="INFO">${table_cell} = p</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.846534" elapsed="0.014431"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.861081" elapsed="0.000137"/>
+</kw>
+<var name="${index}">4</var>
+<var name="${char}">p</var>
+<status status="PASS" start="2024-06-19T17:46:20.846270" elapsed="0.014974"/>
+</iter>
+<var>${index}</var>
+<var>${char}</var>
+<value>@{characters}</value>
+<status status="PASS" start="2024-06-19T17:46:20.776728" elapsed="0.084545"/>
+</for>
+<status status="PASS" start="2024-06-19T17:46:20.722207" elapsed="0.139121"/>
+</kw>
+<kw name="Make guess number 4 with word quiet" owner="resource" source_name="Make guess number ${number} with word ${guess}">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.861763" level="INFO">Typing text 'quiet' into text field 'guess'.</msg>
+<arg>guess</arg>
+<arg>${guess}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.861656" elapsed="0.028014"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.889944" level="INFO">Clicking button 'submitButton'.</msg>
+<arg>submitButton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.889809" elapsed="0.017738"/>
+</kw>
+<kw name="Split String To Characters" owner="String">
+<msg time="2024-06-19T17:46:20.907840" level="INFO">@{characters} = [ q | u | i | e | t ]</msg>
+<var>@{characters}</var>
+<arg>${guess}</arg>
+<doc>Splits the given ``string`` to characters.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.907683" elapsed="0.000172"/>
+</kw>
+<for flavor="IN ENUMERATE">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.908193" level="INFO">${adj} = 2</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.908066" elapsed="0.000143"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.926636" level="INFO">${table_cell} = q</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.908283" elapsed="0.018383"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.926803" elapsed="0.000150"/>
+</kw>
+<var name="${index}">0</var>
+<var name="${char}">q</var>
+<status status="PASS" start="2024-06-19T17:46:20.907999" elapsed="0.018989"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.927266" level="INFO">${adj} = 3</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.927134" elapsed="0.000149"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.941878" level="INFO">${table_cell} = u</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.927361" elapsed="0.014548"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.942042" elapsed="0.000150"/>
+</kw>
+<var name="${index}">1</var>
+<var name="${char}">u</var>
+<status status="PASS" start="2024-06-19T17:46:20.927073" elapsed="0.015152"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.942548" level="INFO">${adj} = 4</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.942373" elapsed="0.000192"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.959776" level="INFO">${table_cell} = i</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.942644" elapsed="0.017161"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.959937" elapsed="0.000155"/>
+</kw>
+<var name="${index}">2</var>
+<var name="${char}">i</var>
+<status status="PASS" start="2024-06-19T17:46:20.942311" elapsed="0.017813"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.960401" level="INFO">${adj} = 5</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.960280" elapsed="0.000139"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.976346" level="INFO">${table_cell} = e</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.960489" elapsed="0.015886"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.976510" elapsed="0.000150"/>
+</kw>
+<var name="${index}">3</var>
+<var name="${char}">e</var>
+<status status="PASS" start="2024-06-19T17:46:20.960212" elapsed="0.016483"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:20.976962" level="INFO">${adj} = 6</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.976841" elapsed="0.000137"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.991177" level="INFO">${table_cell} = t</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.977049" elapsed="0.014156"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.991329" elapsed="0.000154"/>
+</kw>
+<var name="${index}">4</var>
+<var name="${char}">t</var>
+<status status="PASS" start="2024-06-19T17:46:20.976779" elapsed="0.014736"/>
+</iter>
+<var>${index}</var>
+<var>${char}</var>
+<value>@{characters}</value>
+<status status="PASS" start="2024-06-19T17:46:20.907900" elapsed="0.083647"/>
+</for>
+<status status="PASS" start="2024-06-19T17:46:20.861483" elapsed="0.130116"/>
+</kw>
+<kw name="Make guess number 5 with word slush" owner="resource" source_name="Make guess number ${number} with word ${guess}">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:20.992091" level="INFO">Typing text 'slush' into text field 'guess'.</msg>
+<arg>guess</arg>
+<arg>${guess}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:20.991964" elapsed="0.029213"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.021451" level="INFO">Clicking button 'submitButton'.</msg>
+<arg>submitButton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.021320" elapsed="0.020664"/>
+</kw>
+<kw name="Split String To Characters" owner="String">
+<msg time="2024-06-19T17:46:21.042273" level="INFO">@{characters} = [ s | l | u | s | h ]</msg>
+<var>@{characters}</var>
+<arg>${guess}</arg>
+<doc>Splits the given ``string`` to characters.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.042120" elapsed="0.000170"/>
+</kw>
+<for flavor="IN ENUMERATE">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.042625" level="INFO">${adj} = 2</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.042496" elapsed="0.000142"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.057711" level="INFO">${table_cell} = s</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.042716" elapsed="0.015026"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.057875" elapsed="0.000152"/>
+</kw>
+<var name="${index}">0</var>
+<var name="${char}">s</var>
+<status status="PASS" start="2024-06-19T17:46:21.042439" elapsed="0.015614"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.058313" level="INFO">${adj} = 3</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.058196" elapsed="0.000130"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.075342" level="INFO">${table_cell} = l</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.058402" elapsed="0.016970"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.075513" elapsed="0.000149"/>
+</kw>
+<var name="${index}">1</var>
+<var name="${char}">l</var>
+<status status="PASS" start="2024-06-19T17:46:21.058141" elapsed="0.017555"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.075950" level="INFO">${adj} = 4</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.075834" elapsed="0.000132"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.090275" level="INFO">${table_cell} = u</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.076039" elapsed="0.014262"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.090431" elapsed="0.000141"/>
+</kw>
+<var name="${index}">2</var>
+<var name="${char}">u</var>
+<status status="PASS" start="2024-06-19T17:46:21.075778" elapsed="0.014828"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.090876" level="INFO">${adj} = 5</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.090753" elapsed="0.000141"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.105205" level="INFO">${table_cell} = s</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.090959" elapsed="0.014270"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.105354" elapsed="0.000200"/>
+</kw>
+<var name="${index}">3</var>
+<var name="${char}">s</var>
+<status status="PASS" start="2024-06-19T17:46:21.090691" elapsed="0.014898"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.105867" level="INFO">${adj} = 6</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.105740" elapsed="0.000142"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.122867" level="INFO">${table_cell} = h</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.105955" elapsed="0.016938"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.123027" elapsed="0.000140"/>
+</kw>
+<var name="${index}">4</var>
+<var name="${char}">h</var>
+<status status="PASS" start="2024-06-19T17:46:21.105675" elapsed="0.017526"/>
+</iter>
+<var>${index}</var>
+<var>${char}</var>
+<value>@{characters}</value>
+<status status="PASS" start="2024-06-19T17:46:21.042336" elapsed="0.080901"/>
+</for>
+<status status="PASS" start="2024-06-19T17:46:20.991776" elapsed="0.131520"/>
+</kw>
+<kw name="Make guess number 6 with word weird" owner="resource" source_name="Make guess number ${number} with word ${guess}">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.123744" level="INFO">Typing text 'weird' into text field 'guess'.</msg>
+<arg>guess</arg>
+<arg>${guess}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.123634" elapsed="0.026463"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.150365" level="INFO">Clicking button 'submitButton'.</msg>
+<arg>submitButton</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.150240" elapsed="0.019753"/>
+</kw>
+<kw name="Split String To Characters" owner="String">
+<msg time="2024-06-19T17:46:21.170279" level="INFO">@{characters} = [ w | e | i | r | d ]</msg>
+<var>@{characters}</var>
+<arg>${guess}</arg>
+<doc>Splits the given ``string`` to characters.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.170131" elapsed="0.000166"/>
+</kw>
+<for flavor="IN ENUMERATE">
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.170636" level="INFO">${adj} = 2</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.170508" elapsed="0.000144"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.185971" level="INFO">${table_cell} = w</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.170727" elapsed="0.015270"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.186123" elapsed="0.000135"/>
+</kw>
+<var name="${index}">0</var>
+<var name="${char}">w</var>
+<status status="PASS" start="2024-06-19T17:46:21.170445" elapsed="0.015844"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.186553" level="INFO">${adj} = 3</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.186434" elapsed="0.000135"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.204133" level="INFO">${table_cell} = e</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.186645" elapsed="0.017517"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.204291" elapsed="0.000153"/>
+</kw>
+<var name="${index}">1</var>
+<var name="${char}">e</var>
+<status status="PASS" start="2024-06-19T17:46:21.186377" elapsed="0.018097"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.204745" level="INFO">${adj} = 4</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.204619" elapsed="0.000141"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.218816" level="INFO">${table_cell} = i</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.204829" elapsed="0.014015"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.218969" elapsed="0.000146"/>
+</kw>
+<var name="${index}">2</var>
+<var name="${char}">i</var>
+<status status="PASS" start="2024-06-19T17:46:21.204554" elapsed="0.014597"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.219454" level="INFO">${adj} = 5</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.219304" elapsed="0.000169"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.235807" level="INFO">${table_cell} = r</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.219571" elapsed="0.016260"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.235957" elapsed="0.000158"/>
+</kw>
+<var name="${index}">3</var>
+<var name="${char}">r</var>
+<status status="PASS" start="2024-06-19T17:46:21.219235" elapsed="0.016915"/>
+</iter>
+<iter>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-06-19T17:46:21.236425" level="INFO">${adj} = 6</msg>
+<var>${adj}</var>
+<arg>${index} + 2</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.236293" elapsed="0.000145"/>
+</kw>
+<kw name="Get Table Cell" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.250758" level="INFO">${table_cell} = d</msg>
+<var>${table_cell}</var>
+<arg>guessTable</arg>
+<arg>${number}</arg>
+<arg>${adj}</arg>
+<doc>Returns contents of a table cell.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.236511" elapsed="0.014272"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${char}</arg>
+<arg>${table_cell}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.250898" elapsed="0.000140"/>
+</kw>
+<var name="${index}">4</var>
+<var name="${char}">d</var>
+<status status="PASS" start="2024-06-19T17:46:21.236235" elapsed="0.014834"/>
+</iter>
+<var>${index}</var>
+<var>${char}</var>
+<value>@{characters}</value>
+<status status="PASS" start="2024-06-19T17:46:21.170342" elapsed="0.080760"/>
+</for>
+<status status="PASS" start="2024-06-19T17:46:21.123453" elapsed="0.127702"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.456705" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.251263" elapsed="0.205548"/>
+</kw>
+<kw name="Element Should Be Disabled" owner="SeleniumLibrary">
+<arg>submitButton</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.456995" elapsed="0.007496"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-19T17:46:21.470076" level="INFO">Current page contains text 'Sorry, you're too rubbish'.</msg>
+<arg>Sorry, you're too rubbish</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.464639" elapsed="0.005505"/>
+</kw>
+<kw name="Do Something" owner="Baloney">
+<msg time="2024-06-19T17:46:21.470724" level="INFO">${baloney} = Baloney Sandwiches 😋 
+Baloney Sandwiches 😋 
+Baloney Sandwiches 😋 
+Baloney Sandwiches 😋 
+Baloney Sandwiches 😋 
+Baloney Sandwiches 😋 
+Baloney Sandwiches 😋 
+Baloney Sandwiches 😋 
+Baloney Sandwiches 😋 
+Ba...</msg>
+<var>${baloney}</var>
+<status status="PASS" start="2024-06-19T17:46:21.470302" elapsed="0.000454"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${baloney}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.470869" elapsed="0.000122"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn" type="TEARDOWN">
+<arg>tear it down</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-06-19T17:46:21.471132" elapsed="0.000084"/>
+</kw>
+<status status="PASS" start="2024-06-19T17:46:10.518757" elapsed="10.952503"/>
+</test>
+<doc>A test suite with a single test for weirdle.</doc>
+<status status="PASS" start="2024-06-19T17:46:10.435277" elapsed="11.036408"/>
+</suite>
+<status status="PASS" start="2024-06-19T17:46:10.425711" elapsed="11.046293"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Weirdle Robot">Weirdle Robot</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Weirdle">Weirdle Robot.Weirdle</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
